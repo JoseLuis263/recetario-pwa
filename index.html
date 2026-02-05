@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recetario Inteligente</title>
+
+    <!-- Manifest -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Color barra navegador -->
+    <meta name="theme-color" content="#ff7043">
+
+    <!-- Estilos -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>🍽️ Recetario Inteligente</h1>
+    </header>
+
+
+
+    <main>
+        <h2>Agregar / Editar Receta</h2>
+
+        <form id="recipeForm">
+            <input type="hidden" id="recipeId">
+
+            <label>
+                Nombre:
+                <input type="text" id="nombre" required>
+            </label>
+
+            <label>
+                Ingredientes:
+                <textarea id="ingredientes" required></textarea>
+            </label>
+
+            <label>
+                Pasos:
+                <textarea id="pasos" required></textarea>
+            </label>
+
+            <label>
+                Categoría:
+                <input type="text" id="categoria" required>
+            </label>
+
+            <label>
+                Imagen:
+                <input type="file" id="imagen" accept="image/*">
+            </label>
+
+
+            <button type="submit">Guardar Receta</button>
+        </form>
+
+        <hr>
+
+        <h2>📋 Recetas guardadas</h2>
+        <input type="search" id="searchInput" placeholder="Buscar por nombre o ingrediente">
+        <ul id="recipeList"></ul>
+        <section id="recipeDetail" hidden>
+            <h2 id="detailTitle"></h2>
+            <p><strong>Categoría:</strong> <span id="detailCategory"></span></p>
+
+            <h3>Ingredientes</h3>
+            <p id="detailIngredients"></p>
+
+            <h3>Pasos</h3>
+            <p id="detailSteps"></p>
+
+            <img id="detailImage" style="max-width:100%; display:none">
+
+            <button onclick="closeDetail()">Cerrar</button>
+        </section>
+
+    </main>
+
+
+    <footer>
+        <small>TI 22 - PWA</small>
+    </footer>
+
+    <script src="js/db.js"></script>
+    <script src="js/app.js"></script>
+</body>
+
+</html>
