@@ -22,15 +22,15 @@ body{
 }
 
 .logo{
-a{
-    font-family: "Lobster";
-    text-decoration: none;
-    color:black;
-    font-size: 30px;
-}
+    a{
+        font-family: "Lobster";
+        text-decoration: none;
+        color:black;
+        font-size: 30px;
+    }
 }
 
-.container{
+.container {
     max-width: 1200px;
     margin: 0 auto;
 
@@ -64,7 +64,7 @@ header{
         }
     }
 
-    .navigation{
+    .navigation-heder{
         display: flex;
         gap: 40px;
 
@@ -101,12 +101,12 @@ header{
         padding: 30px;
 
         .social-links{
-        display: none;
+            display: none;
 
         }
 
         .navigation-heder{
-        display: none;
+            display: none;
         }
     }
 
@@ -350,11 +350,11 @@ clip-path: circle(150% at top left);
             gap: 15px;
         
 
-        .btn-all-categories{
-            display: none;
+            .btn-all-categories {
+                display: none;
+            }
         }
     }
-}
 
     .list-card-categories{
         display: flex;
@@ -393,6 +393,8 @@ clip-path: circle(150% at top left);
             }
 
         }
+
+    }
         
 	.breakfast {
 		background: radial-gradient(circle, #cdd6b315 0%, #44573015 100%);
@@ -414,29 +416,29 @@ clip-path: circle(150% at top left);
 		background: radial-gradient(circle, #9a5d4630 0%, #87462f15 100%);
 	}
 
+    
+
+    @media(max-width: 768px){
+        gap: 50px;
+
+        .list-card-categories{
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding-top: 60px;
+
+            &::-webkit-scrollbar{
+                display: none;
+            }
+
+            .card-category{
+                flex: 0 0 60%;
+                scroll-snap-align: center;
+            }
+        }
     }
-
-     @media(max-width: 768px){
-      gap: 50;
-
-      .list-card-categories{
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        --webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-        padding-top: 60px;
-
-        &::-webkit-scrollbar{
-            display: none;
-        }
-
-        .card-category{
-            flex: 0 0 60%;
-            scroll-snap-align: center;
-        }
-      }
-     }
 
 }
 
@@ -463,32 +465,144 @@ main{
 
         margin-top: 50px;
 
-        .card-recipe{
+        .card-recipe {
             padding: 0 10px;
             border-radius: var(--rounded-md);
-            background: linear-gradient(to button, #fff 25%, #ecfafe );
+            background: linear-gradient(to bottom, #fff 25%, #ecfafe );
 
             display: flex;
             flex-direction: column;
             gap: 15px;
 
+            .content {
+                display: flex;
+                flex-direction: column;
+                gap: 25px;
+
+                padding: 0 20px;
+                padding-bottom: 35px;
+            }
+
             .container-img{
+                position: relative;
+                overflow: hidden;
+                border-radius: var(--rounded-md);
+
                 img{
                     width: 100%;
                     height: 215%;
                     object-fit: cover;
                     border-radius: var(--rounded-md);
-                    transition: all .3s ease-in;
+                    transition: all .3s ease-in-out;
                 }
+
+                &:hover img{
+                    transform: scale(1.05);
+
+                }
+
+                .btn-favorite {
+                    background-color: white;
+                    border: none;
+                    border-radius: 50%;
+                    width: 30px;
+                    height: 30px;
+                    position: absolute;
+                    top: 15px;
+                    right: 15px;
+                    cursor: pointer;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    i{
+                        font-size: 16px;
+                        color: #dbe1e6;
+                        transition: all .3s;
+                    }
+
+                    i.activate{
+                        color: #fc6260
+                    }
+
+                    @media (hover: hover) and (pointer: fine){
+                        &:hover i{
+                            color: #fc6260;
+
+                        }
+
+                    }
+
+                }
+            }
+
+            .footer {
+                display: flex;
+                align-items: center;
+                gap: 35px;
+            }
+        }
+        .card-message {
+            background-color: #306a50;
+            border-radius: var(--rounded-md);
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+
+            p{
+                color: #fff;
+                font-size: 18px;
+                line-height: 30px;
+                width: 50%;
+                font-family: "Lobster", sans-serif;
+            }
+
+            img{
+                object-fit: cover;
             }
         }
     }
 
-     @media(max-width: 768px){
-        p{
+    @media (max-width: 1024px){
+        .list-card-recipes{
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .card-message{
+            grid-column: 1/-1;
+             padding: 25px 0;
+        }
+    }
+
+    @media (max-width: 768px){
+        p {
             width: 100%;
             font-size: 14px;
         }
-     }
+
+        .list-card-recipes{
+            grid-template-columns: 1fr;
+            gap: 50px;
+
+            .card-recipe{
+                .container-img{
+                    img{
+                        height: 250%;
+                    }
+                }
+            }
+
+            .card-message{
+                padding: 20px;
+                img {
+                    height: 150px;
+                }
+            }
+        }
+    }
 
 }
